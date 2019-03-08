@@ -16,7 +16,7 @@ def main(argv):
             break
         for i in range(0, images.__len__()):
             show_image(PICTURE_BASE_PATH + images[i])
-            if cv2.waitKey() & 0xFF == ord('q'):
+            if cv2.waitKey(2000) & 0xFF == ord('q'):
                 stop = True
                 break
     cv2.destroyAllWindows()
