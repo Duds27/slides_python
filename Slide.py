@@ -10,8 +10,9 @@ MAX_HEIGHT = 720
 
 def main(argv):
     images = read_images_repository(PICTURE_BASE_PATH)
-    for i in range(0, images.__len__()):
-        show_image(PICTURE_BASE_PATH + images[i])
+    while True:
+        for i in range(0, images.__len__()):
+            show_image(PICTURE_BASE_PATH + images[i])
 
 
 def show_image(path):
