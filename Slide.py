@@ -2,18 +2,24 @@ import sys
 import cv2
 from os import walk
 
-BASE_PICTURE_PATH = './pictures/'
+PICTURE_BASE_PATH = './pictures/'
+PICTURE_TITLE = 'Picture'
+MAX_WIDTH = 1280
+MAX_HEIGHT = 720
 
 
 def main(argv):
-    images = read_images_repository(BASE_PICTURE_PATH)
+    images = read_images_repository(PICTURE_BASE_PATH)
     for i in range(0, images.__len__()):
-        show_image(BASE_PICTURE_PATH + images[i])
+        show_image(PICTURE_BASE_PATH + images[i])
 
 
 def show_image(path):
+    cv2.namedWindow(PICTURE_TITLE, cv2.WINDOW_NORMAL)
     image = cv2.imread(path)
-    cv2.imshow("Picture", image)
+    image_resized = cv2.resize(image, (MAX_WIDTH, MAX_HEIGHT))
+    cv2.imshow(PICTURE_TITLE, image_resized)
+    cv2.resizeWindow(PICTURE_TITLE, MAX_WIDTH, MAX_HEIGHT)
     cv2.waitKey()
     cv2.destroyAllWindows()
 
