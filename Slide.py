@@ -15,16 +15,19 @@ def main(argv):
     while True:
         if stop:
             break
-        for i in range(0, images.__len__() - 1):
-            print("Picture {} - {}".format(i.__str__(), images[i]))
-            if i == images.__len__() - 1:
+        contador = 0
+        while contador <= images.__len__() - 1:
+            print("Picture {} - {}".format(contador.__str__(), images[contador]))
+            if contador == images.__len__() - 1:
                 if show_image(PICTURE_BASE_PATH + images[images.__len__() - 1], PICTURE_BASE_PATH + images[0]):
                     stop = True
                     break
+                contador = 0
             else:
-                if show_image(PICTURE_BASE_PATH + images[i], PICTURE_BASE_PATH + images[i + 1]):
+                if show_image(PICTURE_BASE_PATH + images[contador], PICTURE_BASE_PATH + images[contador + 1]):
                     stop = True
                     break
+                contador = contador + 1
     cv2.destroyAllWindows()
 
 
